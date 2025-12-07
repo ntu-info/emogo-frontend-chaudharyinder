@@ -1,25 +1,55 @@
 {
   "expo": {
-    "scheme": "acme",
-    "plugins": [
-      "expo-router"
+    "name": "EmoGo",
+    "slug": "emogo",
+    "scheme": "emogo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
     ],
-    "name": "expo-router-mwe",
-    "slug": "expo-router-mwe",
-    "android": {
-      "package": "com.spiketren.exporoutermwe"
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.emogo.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to record video vlogs.",
+        "NSMicrophoneUsageDescription": "This app uses the microphone to record audio with video vlogs.",
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to tag your mood entries and vlogs.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
+    "android": {
+      "package": "com.emogo.app",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow EmoGo to access your camera.",
+          "microphonePermission": "Allow EmoGo to access your microphone.",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow EmoGo to access your location."
+        }
+      ],
+      "expo-sqlite"
+    ],
     "extra": {
       "router": {},
       "eas": {
         "projectId": "7918e76f-59e9-45c4-aae4-c99cec64cfac"
-      }
-    },
-    "owner": "spiketren",
-    "ios": {
-      "bundleIdentifier": "com.spiketren.exporoutermwe",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
       }
     }
   }
